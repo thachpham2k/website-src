@@ -29,8 +29,8 @@ jobs:
 #       - name: Update
 #         run: apt update -y
         
-      - name: Update themes
-        run: git submodule update --init --recursive
+#       - name: Update themes
+#         run: git submodule update --init --recursive
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
