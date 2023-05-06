@@ -123,8 +123,8 @@ params:
     content: |-
       My area of expertise is cloud computing, and I hold two AWS certifications.
 
-      This website utilizes the hugo-profile template, which is built on gohugo, and employs Git Actions for the build process."
-    image: /images/profile.png
+      This website utilizes the hugo-profile template, which is built on gohugo, and employs Git Actions for the build process.
+    image: /images/pic2.jpg
     bottomImage:
       enable: true  # 16 dấu cộng bên trái phía dưới, không biết để làm gì
     # roundImage: true # Make hero image circular | default false
@@ -150,7 +150,7 @@ params:
   about:
     enable: true
     title: "About Me"
-    image: "/images/profile-2.png"
+    image: "/images/pic1.jpg"
     content: |-
       As a DevOps Engineer with a keen interest in AWS Cloud technologies, I have a background in Linux, networking, and cyber security, and a strong passion for the convergence of solution and technology, as well as the automation of tasks.
 
@@ -172,7 +172,7 @@ params:
 
   # Experience
   experience:
-    enable: false
+    enable: true
     # title: "Custom Name"
     items:
       - job: "Cloud Engineer"
