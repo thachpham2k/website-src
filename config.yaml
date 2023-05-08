@@ -1,4 +1,4 @@
-baseURL: "https://thachpham2k.github.io"
+baseURL: "/"
 languageCode: "en-us"
 title: "ThachPham"
 theme: hugo-profile
