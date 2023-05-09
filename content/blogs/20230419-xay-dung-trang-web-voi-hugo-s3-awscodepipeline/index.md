@@ -69,23 +69,36 @@ Lúc này thử truy cập bằng S3 Static web url thì sẽ gặp lỗi 404 No
 
 ## Tạo AWS Codepipeline
 
-Để tự động hóa việc triển khai trang web mỗi khi có sự thay đổi trong mã nguồn (được lưu trữ trong Code Commit) chúng ta có thể sử dụng AWS CodePipeline và AWS CodeBuild.
+Bạn muốn triển khai trang web tự động mỗi khi cập nhật mã nguồn (trên Code Commit)? Hãy dùng AWS CodePipeline và AWS CodeBuild nhé!
 
 ### AWS CodeCommit
 
-Đã có nơi để lưu các file tĩnh của trang web, tiếp theo sẽ tạo một repository trên CodeCommit để lưu trữ mã nguồn của website Hugo. Bạn có thể sử dụng giao diện web hoặc dòng lệnh để tạo repository (Ở đây mình xài console cho nó thân thiện nhé 😁). 
+Trước tiên, bạn cần có một nơi chứa các file tĩnh của trang web. Bạn có thể tạo một repository trên CodeCommit để lưu mã nguồn của website Hugo. Bạn có thể dùng giao diện web hoặc dòng lệnh để làm việc này (Ở đây mình xài console cho nó thân thiện 😁). 
 
 Đầu tiên truy cập giao diện console của AWS và tìm đến phần [Commit](https://ap-southeast-1.console.aws.amazon.com/codesuite/codecommit/repositories)
 
-Chọn vào phần **Create Repository** và nhập thông tin vào để tạo 1 repository thôi (🤣Đơn giản mà🤣🤣).
+Tiếp theo, bạn nhấn vào **Create Repository** và điền thông tin để tạo repository (🤣Easy game🤣🤣).
 
 ![Tạo CodeCommit Repository](./images/CodeCommit-create-repo.png)
 
-Sau khi tạo xong, bạn cần clone repository về máy tính của bạn và copy các file của website Hugo vào thư mục của repository.
+Khi đã tạo xong, bạn clone repository về máy của bạn và chép các file của website Hugo vào thư mục repository. Hướng dẫn vậy nhưng mình làm hơi khác tí, đầu tiên mình clone resource từ github về sau đó thay đổi cấu hình của git cho phù hợp và sử dụng bằng các lệnh
+
+```shell
+git clone git@github.com:thachpham2k/website-src.git
+cd website-src/
+rm -rf .git
+rm -rf .github
+git init
+git remote add origin https://git-codecommit.ap-southeast-1.amazonaws.com/v1/repos/hugo-codecommit
+git add .
+git commit -m "first commit"
+git checkout -b main
+git push origin main
+```
 
 ![Commit code to Codecommit](./images/CodeCommit-gitcommit.png)
 
-Vấn đề là đâu phải muốn commit là được commit đâu. Phải đăng nhập nữa. Đầu tiên cần phải sử dụng AccessToken để đăng nhập vào AWS Cli (dùng lệnh `aws configure`) sau đó sử dụng câu lệnh này để đăng nhập:
+Tuy nhiên đâu phải muốn commit là được commit đâu. Lưu ý rằng bạn cần phải đăng nhập để commit code. Bạn phải dùng AccessToken để đăng nhập vào AWS Cli (bằng lệnh `aws configure`) rồi mới dùng Credential Helper để đăng nhập:
 
 ```shell
 git config --global credential.helper '!aws codecommit credential-helper $@'
@@ -119,7 +132,7 @@ artifacts:
   base-directory: 'public'
 ```
 
-Tạo file build xong rồi thì tạo CodeBuild thôi. Để tạo CodeBuild thì đầu tiên là truy cập đến [CodeBuild](https://ap-southeast-1.console.aws.amazon.com/codesuite/codebuild/projects) sau đó chọn **Create build project** với các thông tin như: 
+Sau khi có file buildspec.yml, bạn có thể truy cập vào [CodeBuild](https://ap-southeast-1.console.aws.amazon.com/codesuite/codebuild/projects) và chọn **Create build project**. Bạn sẽ cần điền các thông tin như sau:
 
 Cấu hình CodeBuild
 
@@ -129,23 +142,23 @@ Mã nguồn
 
 ![Tạo CodeBuild - source](./images/CodeBuild-src.png)
 
-Môi trường build:
+Môi trường build
 
 ![Tạo CodeBuild - environment](./images/CodeBuild-env.png)
 
-Ngoài ra còn có vị trí file buildspec,... Và cuối cùng là tạo CodeBuild
+Bên cạnh đó, bạn cũng cần chỉ định vị trí của file buildspec.yml trong repository của mình. Sau khi hoàn tất, bạn có thể nhấn **Create build project** để tạo CodeBuild.
 
 ![Tạo CodeBuild - tạo](./images/CodeBuild-create.png)
 
-Tạo xong thì test thử thôi
+Để kiểm tra xem CodeBuild hoạt động như thế nào, bạn có thể nhấn **Start build** và xem kết quả.
 
 ![CodeBuild - chạy thử](./images/CodeBuild-run.png)
 
 ### AWS CodePipeline
 
-Tạo một pipeline trên CodePipeline để tự động hóa quá trình triển khai website. Để cấu hình CodePipeline cần phải cấu hình các thành phần sau:
+Tạo một pipeline trên CodePipeline để tạo một quy trình liên tục từ mã nguồn đến Website. Để cấu hình CodePipeline cần phải cấu hình các thành phần sau:
 
-tên pipeline
+Tên pipeline
 
 ![CodePipeline - config stage](./images/CodePipeline-config-stage.png)
 
@@ -153,15 +166,15 @@ Mã nguồn (CodeCommit)
 
 ![CodePipeline - source stage](./images/CodePipeline-source-stage.png)
 
-giai đoạn build (CodeBuild)
+Giai đoạn build (CodeBuild)
 
 ![CodePipeline - build stage](./images/CodePipeline-build-stage.png)
 
-giai đoạn deploy (S3)
+Giai đoạn deploy (S3)
 
 ![CodePipeline - deploy stage](./images/CodePipeline-deploy-stage.png)
 
-Sau khi tạo xong pipeline, bạn có thể kiểm tra trạng thái của các giai đoạn và xem kết quả triển khai trên S3.
+Khi bạn hoàn thành việc tạo pipeline, bạn có thể theo dõi tiến trình của các giai đoạn và xem kết quả triển khai trên S3.
 
 Kiểm tra xem các tệp đã được cài đặt và chuyển sang S3 chưa
 
@@ -169,7 +182,53 @@ Kiểm tra xem các tệp đã được cài đặt và chuyển sang S3 chưa
 
 ## Vấn đề gặp phải và giải pháp
 
+### Không thể push code lên CodeCommit
+
+Vấn đề này là do bạn chưa thực hiện bước xác thực của AWS đấy. Mình biết 2 các xác thực AWS để sử dụng AWS CodeCommit:
+
+* Sử dụng Git credentials
+* Sử dụng AWS Access Token
+
+1. Sử dụng Git Credentials
+
+2. Sử dụng AWS Access Tokens
+
+Với cách này, bạn cần có một Access Token và một Credential Helper. Access Token là một chuỗi ký tự dùng để xác thực danh tính của bạn khi bạn gửi mã nguồn lên CodeCommit. Credential Helper là một công cụ giúp bạn quản lý Access Token một cách tự động.
+
+Để lấy Access Token, bạn có thể sử dụng giao diện Console bằng cách:
+
+Truy cập **Security credentials**
+
+![Security Credential](./images/AccessToken-security-credential.png)
+
+hoặc [link](https://us-east-1.console.aws.amazon.com/iamv2/home#/security_credentials?section=IAM_credentials)
+
+Sau đó di chuyển đến phần **Access Keys** và tạo Access Keys (nhớ lưu lại thông tin Access key để sử dụng ở bước tiếp theo nhé).
+
+Tiếp theo, bạn cần cài đặt AWS CLI (Command Line Interface) trên máy tính của bạn. Bạn có thể tải AWS CLI từ trang web chính thức của AWS hoặc sử dụng các công cụ quản lý gói phần mềm như pip, npm, homebrew... để cài đặt.
+
+Sau khi cài đặt xong AWS CLI, bạn cần cấu hình thông tin tài khoản AWS của bạn bằng lệnh `aws configure`. Bạn sẽ cần nhập các thông tin sau:
+
+- AWS Access Key ID: là một chuỗi ký tự dùng để xác định tài khoản AWS của bạn.
+- AWS Secret Access Key: là một chuỗi ký tự dùng để xác thực tài khoản AWS của bạn.
+- Default region name: là tên của vùng mà bạn muốn sử dụng các dịch vụ của AWS. Ví dụ: ap-southeast-1 là tên của vùng Singapore.
+- Default output format: là định dạng của kết quả trả về khi bạn sử dụng AWS CLI. Bạn có thể chọn json, text hoặc table.
+
+Bạn có thể tìm thấy các thông tin về AWS Access Key ID và AWS Secret Access Key trong phần [IAM](https://console.aws.amazon.com/iam/home) của giao diện console của AWS. Bạn nên tạo một IAM User riêng cho việc sử dụng CodeCommit và gán cho nó các quyền hạn cần thiết.
+
+Sau khi cấu hình xong AWS CLI, bạn có thể lấy Access Token bằng lệnh `aws codecommit get-login-password`. Lệnh này sẽ trả về một chuỗi ký tự là Access Token của bạn.
+
+Để sử dụng Credential Helper, bạn cần cài đặt Git trên máy tính của bạn (nếu chưa có). Sau đó, bạn cần thiết lập Credential Helper bằng lệnh `git config --global credential.helper '!aws codecommit credential-helper $@'`. Lệnh này sẽ cho phép Git sử dụng Credential Helper để lấy và lưu trữ Access Token khi bạn gửi mã nguồn lên CodeCommit.
+
+Cuối cùng, bạn có thể clone repository từ CodeCommit về máy tính của bạn bằng lệnh `git clone https://git-codecommit.<region>.amazonaws.com/v1/repos/<repository-name>`. Bạn cần thay thế <region> bằng tên vùng mà bạn đã chọn khi cấu hình AWS CLI và <repository-name> bằng tên repository mà bạn đã tạo trên CodeCommit.
+
+Sau khi clone xong, bạn có thể copy các file của website Hugo vào thư mục của repository và gửi mã nguồn lên CodeCommit bằng các lệnh `git add .`, `git commit -m "<message>"` và `git push origin main`.
+
 ### Tùy chọn **Extract file before deploy**
+
+![Extract file before deploy](./images/Extract-file-before-deploy.png)
+
+Khi mình tạo AWS CodePipeline, ở deploy stage mình đã có chút nhầm lần phần *Extract file before deploy*. Sau khi tìm hiểu thì khi mình bấm vào tùy chọn này thì lúc đẩu sang S3 Artifact đã được giải nén và bên cạnh đó tùy chọn **Deployment path** sẽ giúp chúng ta tùy chỉnh vị trí mà file được giải nén được đưa đến trong S3 Bucket
 
 ## Lời kết
 
