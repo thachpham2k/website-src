@@ -1,5 +1,5 @@
 ---
-title: "Xây dựng website cá nhân với Hugo, S3 và AWS Codepipeline"
+title: "Xây dựng Hugo Website sử dụng các dịch vụ của AWS"
 date: 2023-04-19T00:00:00+07:00
 draft: false
 github_link: ""
@@ -9,14 +9,18 @@ tags:
   - AWS Codepipeline
   - S3
 image: /images/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline.png
-description: "Sẽ ra sao nếu trang web được dựng bằng công cụ của AWS"
+description: "Sẽ ra sao nếu trang web được xây dựng dựa trên các dịch vụ của AWS"
 toc: 
 ---
 ## Ý tưởng
 
 Hôm trước có lên bài về việc tạo static web với Hugo với công cụ là Github và Github Action, chúng ta có thể thực hiện tương tự với các dịch vụ của AWS. Ví dụ, ta có thể sử dụng Amazon S3 để lưu trữ trang web và Amazon CloudFront để phân phối nội dung. Ta cũng có thể sử dụng AWS CodePipeline và AWS CodeBuild để tự động hóa việc triển khai trang web mỗi khi có sự thay đổi trong mã nguồn. Đây là một cách rất tiện lợi và hiệu quả để quản lý và cập nhật website của bạn mà không cần phải lo lắng về việc cài đặt và vận hành server.
 
-Bài viết này sẽ đi sâu vào việc sử dụng các dịch vụ của AWS để hộ trợ việc triển khai một website tĩnh sử dụng Hugo lên S3 Static Web.
+Đi kèm với bài Blog mình có 1 video về quá trình tạo website với Hugo sử dụng các dịch vụ của AWS
+
+{{< youtube iWQYZjjVTY4 >}}
+
+Bài viết này sẽ đi sâu vào việc sử dụng các dịch vụ của AWS để hổ trợ việc triển khai một website tĩnh sử dụng Hugo lên S3 Static Web.
 
 ## Tạo S3 Static web
 
