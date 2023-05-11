@@ -167,7 +167,7 @@ params:
         - "AWS"
         - "Python"
         - "CI/CD"
-        - "C/C++"
+        - "bash"
         - "Kubernetes"
 
   # Experience
