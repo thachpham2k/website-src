@@ -13,7 +13,7 @@ description: "Trang web này được dựng lên như thế nào?"
 toc: true
 ---
 
-## Ý tưởng
+# Ý tưởng
 
 Dự án xây dựng một trang web cá nhân là một ý tưởng đã từng ở trong đầu mình từ rất lâu. Là một dân IT, việc tạo ra một không gian riêng để chia sẻ những điều mà mình đam mê, những kiến thức mà mình tích luỹ, và những trải nghiệm mà mình đã trải qua luôn là một ý tưởng hấp dẫn đối với mình. Tuy nhiên, do công việc bận rộn và sự thiếu hụt kỹ năng lập trình frontend, dự án này đã bị hoãn lại trong một thời gian khá dài.
 
@@ -21,11 +21,11 @@ Tuy nhiên, vào gần đây, do có cơ hội nghiên cứu và tìm hiểu v�
 
 Được đồng chí trong team admin VietAWS UG giới thiệu về Hugo lâu rồi nhưng gần đây mình mới được dịp tiếp xúc và tìm hiểu về nó, như thấy được đây là cơ hội để thực hiện ý tưởng, mình đã quyết định áp dụng ngay và xây dựng nên trang web này.
 
-## Xây dựng trang web với hugo
+# Xây dựng trang web với hugo
 
 Để xây dựng trang web với Hugo, bước đầu tiên vẫn là nắm vững tổng quan về nó (Bài viết chỉ là tổng quan chứ không đi sâu về mặt kĩ thuật nên mọi người muốn hiểu rõ thì chịu khó đọc document nha).
 
-### Cài đặt Hugo
+## Cài đặt Hugo
 
 Mình sử dụng ubuntu để host nên sử dụng apt package manager và câu lệnh như sau:
 
@@ -35,7 +35,7 @@ sudo apt install hugo
 
 Mọi người có thể tìm hiểu cách cái đặt ở trang [hugo installation](https://gohugo.io/installation/)
 
-### Tạo khung sườn cho hugo
+## Tạo khung sườn cho hugo
 
 Sau khi cài đặt thì đi đến tạo website đầu tiên với hugo
 
@@ -48,7 +48,7 @@ Hugo sẽ tạo 1 folder tên là mysite và đây là cấu trúc của folder 
 
 ![cấu trúc cơ bản của một hugo source](./images/hugo%20mysite%20structure.png)
 
-### Themes
+## Themes
 
 Thế là đã có khung sườn cho hugo. Công việc tiếp theo là tìm themes cho hắn. Vậy thì tìm themes ở đâu? ở trang [Hugo themes](https://themes.gohugo.io/) này nè
 
@@ -58,7 +58,7 @@ Sau khi lục lọi 1 hồi thì mình đã tìm đến [hugo-profile theme](htt
 
 Sau khi xem xét qua phần giao diện và hiển thị tiếng việt thì vẫn thấy cái theme này trông quá ư là ổn nên quất luôn😘😘
 
-#### Cấu hình hugo
+## Cấu hình hugo
 
 Chọn được theme rồi thì thêm nó vào trong hugo project thôi. Về lệnh thì do có chút khác biệt về phần themes nên mình sử câu lệnh hơi khác so với trang [Hugo quickstart](https://gohugo.io/getting-started/quick-start/) nên ai gặp lỗi thì có thể tham khảo document của Hugo
 
@@ -70,7 +70,7 @@ cp themes/hugo-profile/exampleSite/config.yaml ./
 hugo server
 ```
 
-#### Bài viết đầu tiên
+## Bài viết đầu tiên
 
 Để lên bài đầu tiên thì đầu tiên vẫn phải là nghiên cứu qua cấu trúc của 1 blog được mình sử dụng
 
@@ -101,11 +101,11 @@ toc: # này là viết tắt của table of content, mặc định là true (có
 
 Thế là xem như đã tạo xong 1 hugo project cơ bản.
 
-### Vấn đề gặp phải và giải pháp
+## Vấn đề gặp phải và giải pháp
 
 Nhìn thì đơn giản vậy thôi, chứ do là newbie bên mảng này nên gặp bug cũng khá nhiều
 
-#### config.toml
+## config.toml
 
 Này là do mình lên document của Hugo copy mà không chịu đọc kĩ thế là mình tạo hugo project bằng những lệnh sau:
 
@@ -127,7 +127,7 @@ Loay hoay 1 lúc thì mới tìm được vấn để, thế là phải xóa fil
 
 Mọi người muốn hiểu rõ hơn về phần cấu hình này thì có thể đọc [Hugo configuration](https://gohugo.io/getting-started/configuration/)
 
-#### Hiển thị ảnh bìa
+## Hiển thị ảnh bìa
 
 Hiển thị ảnh trong bài viết thì bình thường chứ hiển thị ảnh bìa thì nó hơi khác tí.
 
@@ -135,7 +135,7 @@ Nếu để link banner trong thuộc tính images của page là  `images/banne
 
 ![Cách lưu ảnh bìa của 1 trang](./images/luu-anh-bia-cua-trang.png)
 
-#### Mình xóa git link đến resource của tác giả
+## Mình xóa git link đến resource của tác giả
 
 Thay vì sử dụng `git submodule add https://github.com/gurusabarish/hugo-profile.git themes/hugo-profile` thì mình lại dùng `git clone https://github.com/gurusabarish/hugo-profile.git` sau đó `rm -rf .git`.
 
@@ -143,21 +143,21 @@ Bản thân có chỉnh sửa đôi chút qua theme source của tác giả nên
 
 Hơi có chút không tôn trọng bản quyền của tác giả nhưng thôi vậy dùng tạm 😁 chân thành xin lỗi ha 😘.
 
-## Triển khai website lên github và cấu hình Github Action
+# Triển khai website lên github và cấu hình Github Action
 
 Thế là xong phần web ở local, đưa em nó lên mạng thôi 😍
 
-### Tạo thachpham2k.github.io
+## Tạo thachpham2k.github.io
 
 Phần này thì github viết hơi bị dễ hiểu luôn á, nên mọi người có thể tham khảo [Tạo static website với github](https://pages.github.com/)
 
 Tóm tắt thì việc cần làm ở đây là tạo 1 github repository dạng `<username>.github.io`.
 
-### Tạo website-src
+## Tạo website-src
 
 Tương tự bước trước đó nhưng lần này thích đặt tên là gì cũng được, đây sẽ là nơi chưa source của hugo project.
 
-### Tạo Personal Token
+## Tạo Personal Token
 
 Personal token là gì? Tại sao lại phải tạo nó? Nó được sử dụng khi nào?
 
@@ -186,7 +186,7 @@ Trong file cấu hình github action, nếu muốn sử dụng github PAT thì p
 personal_token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-### Tạo Github Deploy key
+## Tạo Github Deploy key
 
 Nếu không muốn sử dụng PAT thì có 1 tùy chọn khác đó là sử dụng ssh key. Để có thể dụng cách này đầu tiên cần có 1 ssh key có thể dụng cho github.
 
@@ -225,7 +225,7 @@ Sau khi tạo key thì tiến hành cấu hình tren github
 deploy_key: ${{ secrets.privatekey }}
 ```
 
-### Tạo Github action
+## Tạo Github action
 
 Đầu tiên là tìm đến source repo (website-src) và chọn đến tab Action
 
@@ -287,25 +287,25 @@ jobs:
 
 Phần này có khá nhiều thứ, lười giải thích quá. Mọi người commit file và đợi kết quả thôi.
 
-### Vấn đề gặp phải và giải pháp
+## Vấn đề gặp phải và giải pháp
 
 Mục này xuất hiện gần như là điều hiển nhiên rồi, newbie mà, làm sao để tránh khỏi lỗi đây
 
-#### Sử dụng github token
+## Sử dụng github token
 
 Đầu tiên mình sử dụng github token (được recommend sử dụng vì tính bảo mật) nhưng mà ở project này Github token không đáp ứng đủ quyền (quyền write) nên mình phải chuyển qua xài PAT.
 
-#### Sử dụng PAT
+## Sử dụng PAT
 
 Vì Github token không đáp ứng được nhu cầu nên mình chuyển qua sử dụng PAT, tuy nhiên vấn đề gần tương tự đã xảy ra là mình cấu hình token và khi chạy cứ nhận về Permission deny. Lười test các permission quá nên mình chuyển qua xài Deploy key 🤣😂 để hôm này rảnh quay lại test cái PAT (hôm nào này hơi xa đó).
 
-#### Xây dựng file build cho github action
+## Xây dựng file build cho github action
 
 Mình gặp chút vấn đề khi tạo file cấu hình git action.
 
 Cụ thể là khi lấy giá trị token mình sử dụng `personal_token: ${{ secrets.TOKEN }}` thay vì `personal_token: ${{ secrets.GITHUB_TOKEN }}` làm loay hoay chả biết sai ở đâu (công nhận lúc đó hơi ngáo thật).
 
-## Lời kết
+# Lời kết
 
 Bài viết ghi lại phần nào quá trình mình tạo nên trang web này. Cũng là lần đầu chơi với Hugo cũng như git action và chưa dành nhiều thời gian nghiên cứu kĩ nên kiến thức sẽ có hơi sơ xài hay có thể sai mong mọi người có thể góp ý qua fb hoặc gmail mình để ở cuối trang web 
 

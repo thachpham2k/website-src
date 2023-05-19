@@ -12,7 +12,7 @@ image: /images/blogs/20230419-xay-dung-trang-web-voi-hugo-s3-awscodepipeline.png
 description: "Sẽ ra sao nếu trang web được xây dựng dựa trên các dịch vụ của AWS"
 toc: 
 ---
-## Ý tưởng
+# Ý tưởng
 
 Hôm trước có lên bài về việc tạo static web với Hugo với công cụ là Github và Github Action, chúng ta có thể thực hiện tương tự với các dịch vụ của AWS. Ví dụ, ta có thể sử dụng Amazon S3 để lưu trữ trang web và Amazon CloudFront để phân phối nội dung. Ta cũng có thể sử dụng AWS CodePipeline và AWS CodeBuild để tự động hóa việc triển khai trang web mỗi khi có sự thay đổi trong mã nguồn. Đây là một cách rất tiện lợi và hiệu quả để quản lý và cập nhật website của bạn mà không cần phải lo lắng về việc cài đặt và vận hành server.
 
@@ -22,11 +22,11 @@ Hôm trước có lên bài về việc tạo static web với Hugo với công 
 
 Bài viết này sẽ đi sâu vào việc sử dụng các dịch vụ của AWS để hổ trợ việc triển khai một website tĩnh sử dụng Hugo lên S3 Static Web.
 
-## Tạo S3 Static web
+# Tạo S3 Static web
 
 Bước đầu tiên vẫn là tạo trang web trước, nội dung tính sau 😂. Để host trang web tĩnh trên AWS, chúng ta có thể sử dụng tính năng Static website hosting của Amazon S3. Tuy nhiên, trước khi sử dụng tính năng này, chúng ta cần phải tạo một bucket S3 để lưu trữ các file của trang web. Sau đó, ta có thể cấu hình các quyền truy cập cho bucket S3 để cho phép trang web được truy cập từ bên ngoài. Việc sử dụng tính năng **Static website hosting** của S3 sẽ giúp cho việc host trang web trở nên đơn giản và hiệu quả hơn.
 
-### Tạo S3 Bucket
+## Tạo S3 Bucket
 
 Việc cần thực hiện là tạo một S3 bucket với tên và tag nhất định. Tuy nhiên, để dễ dàng cho việc lưu trữ và chia sẻ website, cần phải kích hoạt **Object Ownership** và vô hiệu hóa các tùy chọn **Block Public Access** trên bucket.
 
@@ -34,7 +34,7 @@ Việc cần thực hiện là tạo một S3 bucket với tên và tag nhất �
 
 ![Tắt tùy chọn Block Public Access](./images/S3-Block-Public-Access.png)
 
-### S3 Static Web Hosting
+## S3 Static Web Hosting
 
 Để kích hoạt tính năng này, trước tiên bạn cần chọn vào S3 bucket muốn bật tính năng, sau đó chọn tab Properties, kéo xuống cuối trang và chọn Enable Static Web Hosting, sau đó nhập `index.html` vào phần **Index document**.
 
@@ -44,7 +44,7 @@ Tuy nhiên, khi truy cập vào S3 static web bằng tên miền, có thể gặ
 
 ![Lỗi 403 khi truy cập S3 static web](./images/s3-static-web-403-response.png)
 
-### Thêm quyền getObject
+## Thêm quyền getObject
 
 Để cho người dùng có thể truy cập vào trang web static trên S3 mà không gặp phải lỗi 403, cần phải thêm quyền truy cập cho bucket. Việc này có thể được thực hiện bằng cách truy cập vào S3 bucket, chọn tab **Permissions**, và chọn phần **Bucket policy**. Sau đó, nhập đoạn mã sau vào phần policy (nhớ điền S3 Bucket name vào phần ARN nha).
 
@@ -71,11 +71,11 @@ Lúc này thử truy cập bằng S3 Static web url thì sẽ gặp lỗi 404 No
 
 ![Lỗi 404 khi truy cập S3 static web](./images/s3-static-web-404-response.png)
 
-## Tạo AWS Codepipeline
+# Tạo AWS Codepipeline
 
 Bạn muốn triển khai trang web tự động mỗi khi cập nhật mã nguồn (trên Code Commit)? Hãy dùng AWS CodePipeline và AWS CodeBuild nhé!
 
-### AWS CodeCommit
+## AWS CodeCommit
 
 Trước tiên, bạn cần có một nơi chứa các file tĩnh của trang web. Bạn có thể tạo một repository trên CodeCommit để lưu mã nguồn của website Hugo. Bạn có thể dùng giao diện web hoặc dòng lệnh để làm việc này (Ở đây mình xài console cho nó thân thiện 😁). 
 
@@ -113,7 +113,7 @@ git config --global credential.UseHttpPath true
 
 Phần này mình bỏ qua về Hugo resource, nếu muốn tìm hiểu thêm bạn chịu khó xem lại bài [Blog](https://thachpham2k.github.io/blogs/20230417-xay-dung-trang-web-voi-hugo-va-github/#t%E1%BA%A1o-website-src) trước của mình nhé.
 
-### AWS CodeBuild
+## AWS CodeBuild
 
 Trước khi đi vào tạo CodeBuild thì phải xây dựng file build trước đã. Tạo 1 file có tên là `buildspec.yml` và lưu nó ở trong repository được tạo ở bước trước. Và nội dung của file build như sau:
 
@@ -158,7 +158,7 @@ Bên cạnh đó, bạn cũng cần chỉ định vị trí của file buildspec
 
 ![CodeBuild - chạy thử](./images/CodeBuild-run.png)
 
-### AWS CodePipeline
+## AWS CodePipeline
 
 Tạo một pipeline trên CodePipeline để tạo một quy trình liên tục từ mã nguồn đến Website. Để cấu hình CodePipeline cần phải cấu hình các thành phần sau:
 
@@ -184,9 +184,9 @@ Kiểm tra xem các tệp đã được cài đặt và chuyển sang S3 chưa
 
 ![Check CodePipeline](./images/s3-success.png)
 
-## Vấn đề gặp phải và giải pháp
+# Vấn đề gặp phải và giải pháp
 
-### Không thể push code lên CodeCommit
+## Không thể push code lên CodeCommit
 
 Vấn đề này là do bạn chưa thực hiện bước xác thực của AWS đấy. Mình biết 2 các xác thực AWS để sử dụng AWS CodeCommit:
 
@@ -228,12 +228,12 @@ Cuối cùng, bạn có thể clone repository từ CodeCommit về máy tính c
 
 Sau khi clone xong, bạn có thể copy các file của website Hugo vào thư mục của repository và gửi mã nguồn lên CodeCommit bằng các lệnh `git add .`, `git commit -m "<message>"` và `git push origin main`.
 
-### Tùy chọn **Extract file before deploy**
+## Tùy chọn **Extract file before deploy**
 
 ![Extract file before deploy](./images/Extract-file-before-deploy.png)
 
 Khi mình tạo AWS CodePipeline, ở deploy stage mình đã có chút nhầm lần phần *Extract file before deploy*. Sau khi tìm hiểu thì khi mình bấm vào tùy chọn này thì lúc đẩu sang S3 Artifact đã được giải nén và bên cạnh đó tùy chọn **Deployment path** sẽ giúp chúng ta tùy chỉnh vị trí mà file được giải nén được đưa đến trong S3 Bucket
 
-## Lời kết
+# Lời kết
 
 Đến đây, bạn đã hoàn thành việc triển khai website Hugo lên S3 Static Web bằng CodeCommit, CodeBuild và CodePipeline. Bạn có thể thử thay đổi nội dung của website trên CodeCommit và xem pipeline tự động chạy và cập nhật website trên S3. Chúc các bạn thành công!
