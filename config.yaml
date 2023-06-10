@@ -127,7 +127,7 @@ params:
     content: |-
       My area of expertise is cloud computing, and I hold two AWS certifications.
 
-      This website utilizes the hugo-profile template, which is built on gohugo, and employs Git Actions for the build process.
+      This website utilizes the hugo-profile template, which is built on gohugo, and uses Git Actions for the build process.
     image: /images/pic2.jpg
     bottomImage:
       enable: true  # 16 dấu cộng bên trái phía dưới, không biết để làm gì
@@ -146,9 +146,9 @@ params:
           url: https://www.facebook.com/thach.pham.dev/
         - icon: fab fa-linkedin
           url: https://www.linkedin.com/in/phamthach/
-      customIcons:
-        - icon: /images/tryhackme.png
-          url: "https://tryhackme.com/p/ishimaru"
+      # customIcons:
+      #   - icon: /images/tryhackme.png
+      #     url: "https://tryhackme.com/p/ishimaru"
 
   # About
   about:
@@ -158,7 +158,7 @@ params:
     content: |-
       As a DevOps Engineer with a keen interest in AWS Cloud technologies, I have a background in Linux, networking, and cyber security, and a strong passion for the convergence of solution and technology, as well as the automation of tasks.
 
-      I have practical experience in applying SOLID, OOP, Spring boot framework to develop microservices running on AWS. Additionally, I can also construct a devops pipeline using Jenkin and AWS services.
+      I have practical experience in applying SOLID, OOP, Spring boot framework to develop microservices running on AWS. Additionally, I can also construct a devops pipeline using CodePipeline and AWS services.
 
       Currently, I am employed as a Cloud Engineer at CMC Global (https://cmcglobal.com.vn) in Vietnam. 
       
@@ -172,7 +172,7 @@ params:
         - "Python"
         - "CI/CD"
         - "bash"
-        - "Kubernetes"
+        - "Linux"
 
   # Experience
   experience:
@@ -194,8 +194,8 @@ params:
 
           In here, I am:
             - Working with Java Spring framework
-            - Implementing CI/CD using CodePipeline, Jenkins
-            - Infrastructure as Code (IaC) with Terraform, CloudFormation, SAM
+            - Implementing CI/CD using CodePipeline
+            - Infrastructure as Code (IaC) with Terraform
             - Deploying infrastructure on AWS
             - Designing infrastructure and calculating cost
             - Creating proof of concept for systems
