@@ -171,7 +171,7 @@ params:
         - "AWS"
         - "Python"
         - "CI/CD"
-        - "bash"
+        - "Terraform"
         - "Linux"
 
   # Experience
