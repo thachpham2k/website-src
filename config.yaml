@@ -38,6 +38,22 @@ Menus:
       title: Blog posts
       url: /gallery
       weight: 2
+    - identifier: tool
+      title: Tools
+      name: Tools
+      weight: 3
+    - identifier: tool1
+      title: AWS Exam
+      name: AWS Exam
+      url: /aws-exam
+      parent: tool
+      weight: 1
+    - identifier: tool2
+      title: Azure Exam
+      name: Azure Exam
+      url: /azure-exam
+      parent: tool
+      weight: 2
     #Dropdown menu
     # - identifier: dropdown
     #   title: Example dropdown menu
@@ -123,9 +139,10 @@ params:
     enable: true
     intro: "Hi, my name is"
     title: "Phạm Thạch"
-    subtitle: "I am a DevOps engineer"
+    subtitle: |-
+      I am a DevOps engineer
     content: |-
-      My area of expertise is cloud computing, and I hold two AWS certifications.
+      As an experienced AWS Cloud Engineer and DevOps Engineer with over a year of industry experience, I have obtained two associate-level AWS certifications. 
 
       This website utilizes the hugo-profile template, which is built on gohugo, and uses Git Actions for the build process.
     image: /images/pic2.jpg
@@ -135,9 +152,9 @@ params:
     button:
       enable: true
       name: "Resume"
-      url: "#"
+      url: "https://export-download.canva.com/kjgo4/DAFsFbkjgo4/75/0-9081921193817873686.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJHKNGJLC2J7OGJ6Q%2F20231217%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231217T021836Z&X-Amz-Expires=18714&X-Amz-Signature=43449db9f4852f49d3aa8312616eb5d6aa12d721a86fced6615ff5b1cd59ff64&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27DevOps%2520Resume.pdf&response-expires=Sun%2C%2017%20Dec%202023%2007%3A30%3A30%20GMT"
       download: true
-      newPage: false
+      newPage: true
     socialLinks:
       fontAwesomeIcons:
         - icon: fab fa-github
@@ -179,10 +196,10 @@ params:
     enable: true
     # title: "Custom Name"
     items:
-      - job: "Cloud Engineer"
+      - job: "Cloud Engineer/ DevOps Engineer"
         company: "CMC Global"
         companyUrl: "https://cmcglobal.com.vn"
-        date: "Oct 2022 - present"
+        date: "Oct 2022 - oct 2023"
         # featuredLink:
         #   enable: true
         #   url: "#"
@@ -190,14 +207,21 @@ params:
         #   enable: true
         #   content: I worked as a software developer for more than one year in CMC Global.
         content: |
-          I work as a Cloud Engineer at CMC Global in Vietnam.
+          - DevOps Engineer for Australia Client (May 2023 – October/2023)
+          I have worked as a DevOps Engineer/App Support at CMC Global in Vietnam, where I gained experience working with big hybrid systems (AWS and OnPremise). During my time there, I:
+            - Collaborating with Java Spring framework
+            - Develop and maintain configuration & infrastructure as code using tools such as Ansible, Terraform.
+            - Implement and maintain continuous integration and continuous deployment (CI/CD) pipelines for applications and services
+            - Working with AWS infrastructure 3rd-party tools: GorrilaStack, PyraCloud, Masshup
+          
+          - Cloud Engineer for Cloud Solution Center (Oct 2022 – May 2023)
+          I have been working as a Cloud Engineer at Cloud Solution Center team of CMC Global in Vietnam. In this role, I am responsible for:
 
-          In here, I am:
             - Working with Java Spring framework
-            - Implementing CI/CD using CodePipeline
-            - Infrastructure as Code (IaC) with Terraform
-            - Deploying infrastructure on AWS
-            - Designing infrastructure and calculating cost
+            - Implementing CI/CD using AWS CodePipeline
+            - Utilizing Infrastructure as Code (IaC) principles with Terraform
+            - Deploying infrastructure on AWS cloud platform
+            - Designing infrastructure and conducting cost calculations
             - Creating proof of concept for systems
 
       - job: "Intern Cloud Engineer"
@@ -209,12 +233,11 @@ params:
         #   name: "View the project"
         #   url: "#"
         content: |-
-          I work as a Cloud Engineer at CMC Telecom in Vietnam. 
-          In here, I am:
-            - Learn about AWS cloud and take AWS certificate exam 
-            - Learn about terraform and using it to build infrastructure as code 
-            - Work with scum model 
-            - Draw the infrastructure and calculate the cost 
+          I have worked as a Cloud Engineer at CMC Telecom in Vietnam. During my time there, I gained valuable experience in the following areas
+            - Learning about AWS cloud services and successfully obtaining AWS Solution Architect Associate certification.
+            - Acquiring knowledge of Terraform and utilizing it to develop infrastructure using the concept of Infrastructure as Code (IaC).
+            - Collaborating within an Agile/Scrum environment, effectively managing tasks and projects.
+            - Creating infrastructure diagrams and performing cost calculations for various deployments.
 
   # Education
   education:
@@ -243,10 +266,16 @@ params:
     # title: "Custom Name"
     items:
       - title: AWS Solution Architect - Associate Certificate
-        content: I pass AWS Solution Architect - Associate Certificate exam.
+        content: |-
+          Issued Aug 2022 – Expires Aug 2025
+
+          Credential ID 0ESRP0ECSJB1169V
         url: https://www.credly.com/badges/249858da-315f-4da4-a93f-2907d01a9dff/public_url
       - title: AWS Developer - Associate Certificate
-        content: I pass AWS Developer - Associate Certificate exam.
+        content: |-
+          Issued Feb 2023 – Expires Feb 2026
+
+          Credential ID H8PJB0JK6FV4QE5K
         url: https://www.credly.com/badges/9a9f4359-c470-49cc-b2ca-5b335b36af0d/public_url
 
   # projects
