@@ -7,7 +7,8 @@ author: "Thạch Phạm"
 tags:
   - aws
   - certificate
-  - CLF
+  - DVA
+  - AWS Developer Associate
 image: /images/aws-exam/awsdva.png
 description: "Ở đây có mấy cái đề mẫu của AWS Developer Associate Certificate"
 toc: true

@@ -8,6 +8,7 @@ tags:
   - aws
   - certificate
   - CLF
+  - AWS Cloud Practitioner
 image: /images/aws-exam/awsclf.png
 description: "Ở đây có mấy cái đề mẫu của AWS Cloud Practitioner Certificate"
 toc: true

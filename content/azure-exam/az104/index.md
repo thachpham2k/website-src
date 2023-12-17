@@ -5,9 +5,10 @@ draft: false
 github_link: ""
 author: "Thạch Phạm"
 tags:
-  - aws
+  - azure
   - certificate
-  - CLF
+  - az104
+  - Azure AZ104
 image: /images/azure-exam/azureaz104.png
 description: "Ở đây có mấy cái đề mẫu của Azure AZ104"
 toc: true
