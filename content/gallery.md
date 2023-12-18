@@ -5,10 +5,16 @@ draft: false
 description: "My gallery :earth_asia:"
 layout: "gallery"
 images:
- - src: https://iso.500px.com/wp-content/uploads/2016/03/stock-photo-142984111-1500x1000.jpg
- - src: https://img.etimg.com/thumb/msid-68721417,width-650,imgsize-1016106,,resizemode-4,quality-100/nature1_gettyimages.jpg
- - src: https://thumbs.dreamstime.com/b/team-ants-council-collective-decision-work-17037482.jpg
- - src: https://thumbs.dreamstime.com/b/summer-day-smiling-women-relax-wearing-red-dress-fashion-standing-wooden-bridge-over-sea-blue-sky-background-summer-107411998.jpg
- - src: https://thumbs.dreamstime.com/b/young-woman-playing-dog-pet-beach-sunrise-sunset-girl-dog-having-fun-seasid-seaside-cute-neglected-stay-66480218.jpg
- - src: https://thumbs.dreamstime.com/b/funny-picture-taken-sunrise-frozen-lake-perspective-rider-retro-bicycle-sunrise-personal-211066044.jpg 
+ - src: /images/galery/AWS_DVA_Certificate.png
+ - src: /images/galery/AWS_SAA_Certificate.png
+ - src: /images/galery/TryHackMe-AdventOfCyber2021.png
+ - src: /images/galery/KhanhHoa_TruocDeoCa.jpg
+ - src: /images/galery/NhaTrang_binhminhoKhanhHoa_truocdeoca2.jpg
+ - src: /images/galery/NhaTrang_truocdeoCa4.jpg
+ - src: /images/galery/BinhThuan_BienPhanThiet.jpg
+ - src: /images/galery/PhuYen_bien.jpg
+ - src: /images/galery/PhuYen_ToiThayHoaVangTrenCoXanh.jpg
+ - src: /images/galery/PhuYen_SauDeoCa.jpg
+ - src: /images/galery/PhuYen_SongBa.jpg
+ - src: /images/galery/BinhThuan_HoaGiayMuiNe.jpg
 ---
