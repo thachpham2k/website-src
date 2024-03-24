@@ -33,15 +33,33 @@ Menus:
       title: Blog posts
       url: /blogs
       weight: 1
-    - identifier: gallery
-      name: Gallery
-      title: Blog posts
-      url: /gallery
+    # - identifier: gallery
+    #   name: Gallery
+    #   title: Blog posts
+    #   url: /gallery
+    #   weight: 2
+
+    - identifier: fcj-workshop
+      title: FCJ Workshop
+      name: FCJ Workshop
+      weight: 3
+    - identifier: fcj-workshop1
+      title: FCJ Workshop 1
+      name: FCJ Workshop 1
+      url: /fcj-workshop1
+      parent: fcj-workshop
+      weight: 1
+    - identifier: fcj-workshop2
+      title: FCJ Workshop 2
+      name: FCJ Workshop 2
+      url: /fcj-workshop2
+      parent: fcj-workshop
       weight: 2
+
     - identifier: tool
       title: Tools
       name: Tools
-      weight: 3
+      weight: 4
     - identifier: tool1
       title: AWS Exam
       name: AWS Exam
